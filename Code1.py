@@ -1,13 +1,19 @@
-from machine import Pin
+from machine import Pin #code1
 import time
 
-sm=PWM(Pin(4),freq=50)
-list=[35,70,120]
+
+
+in1= Pin(4,Pin.OUT)
+in2= Pin(5,Pin.OUT)
+in3= Pin(12,Pin.OUT)
+in4= Pin(27,Pin.OUT)
+
+pos=[[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]]
 
 while True:
-    sm.duty(list[0])
-    time.sleep(1)
-    sm.duty(list[1])
-    time.sleep(1)
-    sm.duty(list[2])
-    time.sleep(1)
+    for i in pos:
+        in1.value(i[0])
+        in2.value(i[1])
+        in3.value(i[2])
+        in4.value(i[3])
+        time.sleep(0.005)
